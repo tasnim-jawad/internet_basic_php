@@ -54,13 +54,18 @@ unset($_SESSION['form_errors'], $_SESSION['old_input'], $_SESSION['success']);
             max-width: 400px;
             margin-bottom: 40px;
         }
-        input[type="text"], input[type="email"] {
+        input[type="text"], input[type="email"], input[type="date"]  {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
         button {
             width: 100%;
@@ -120,18 +125,18 @@ unset($_SESSION['form_errors'], $_SESSION['old_input'], $_SESSION['success']);
     <form action="submit.php" method="POST">
         <input type="text" name="name" placeholder="Your Name" value="<?= htmlspecialchars($old['name'] ?? '') ?>" required>
         <?php if (!empty($errors) && in_array("Name is required.", $errors)): ?>
-            <div style="color:red; margin-bottom:10px;">Name is required.</div>
+            <div class="error">Name is required.</div>
         <?php endif; ?>
         <input type="email" name="email" placeholder="Your Email" value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
         <?php if (!empty($errors) && in_array("Invalid email.", $errors)): ?>
-            <div style="color:red; margin-bottom:10px;">Invalid email.</div>
+            <div class="error">Invalid email.</div>
         <?php endif; ?>
         <input type="text" name="number" placeholder="Your Number" value="<?= htmlspecialchars($old['number'] ?? '') ?>" required>
         <?php if (!empty($errors) && in_array("Number must be 10-15 digits.", $errors)): ?>
-            <div style="color:red; margin-bottom:10px;">Number must be 10–15 digits.</div>
+            <div class="error">Number must be 10–15 digits.</div>
         <?php endif; ?>
         <input type="date" name="date" id="date" required>
-        <div id="date-error" style="color: red; margin-bottom: 10px;"></div>
+        <div id="date-error" class="error"></div>
         <button type="submit">Submit</button>
     </form>
 
