@@ -137,7 +137,11 @@ unset($_SESSION['form_errors'], $_SESSION['old_input'], $_SESSION['success']);
 
     <h3>Submitted Data</h3>
     <table>
-        <tr><th>Name</th><th>Email</th><th>Number</th></tr>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+        </tr>
         <?php while($row = $result->fetch_assoc()): ?>
             <tr>
                 <td><?= htmlspecialchars($row['name']) ?></td>
